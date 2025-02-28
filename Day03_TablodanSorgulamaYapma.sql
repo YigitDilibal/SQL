@@ -153,4 +153,281 @@ SELECT * FROM tablo_adı WHERE sütun_adı < 1;
 SELECT * FROM kisiler
 WHERE yas > 30;
 
+/*  ========================  SORU-8 ========================
+    Kisiler tablosundaki ismi 'emre' den buyuk olan kisilerin
+    isimlerini listeleyiniz.
+    =========================================================
+ */
+ 
+ /*===============================================
+CHAR veya VARCHAR türündeki ifadeler için de büyüktür (>) ve küçüktür (<)
+ operatörleri kullanılabilir. Bu operatörler, karakter dizileri (stringler)
+ arasında alfabetik veya leksikografik karşılaştırma yapar.
+ Bu tür karşılaştırmalar, karakter dizilerinin alfabetik sırasına göre büyük
+ veya küçük olup olmadıklarını belirlemek için kullanılır.
+ (ASCII tablosundaki yerlerine gore karakterleri siralar)
+===============================================*/
+
+SELECT isim
+FROM kisiler
+WHERE isim > 'Emre';
+
+/*  ========================  SORU-9 ========================
+    Kisiler tablosundaki sehri 'D' den buyuk olan sehirlerde
+    yasayan kisilerin isim ve soyisim  bilgilerini listeleyiniz.
+    =========================================================
+ */
+ 
+ SELECT isim, soyisim
+ FROM kisiler
+ WHERE sehir > 'D';
+ 
+ /*===============================================
+Büyük eşittir (>=), > Küçük eşittir (<=): Sayısal değerlerin
+büyüklüğünü/küçüklüğünü eşitlikle birlikte karşılaştırır.
+===============================================*/
+
+/*===============================================
+Büyüktür (>) ve küçüktür (<) operatörleri kullanıldığında, karşılaştırmada
+ belirtilen değer genellikle dahil edilmez; yani sorgulanan değer "hariç" tutulur.
+ Bu, sayısal değerler, tarihler ve karakter dizileri gibi farklı veri türleri için
+ geçerlidir. Eğer belirtilen değeri de dahil etmek istiyorsanız, büyük eşittir (>=)
+ veya küçük eşittir (<=) operatörlerini kullanmanız gerekir.
+===============================================*/
+
+/*
+*************** SYNTAX ***************
+SELECT * FROM tablo_adı WHERE sütun_adı >= 1;
+SELECT * FROM tablo_adı WHERE sütun_adı <= 1;
+*/
+
+/*  ========================  SORU-10 ========================
+    Kisiler tablosundaki sehri 'Z' den kucuk veya esit olan sehirlerde
+    yasayan kisileri isim ve soyisim  bilgilerini listeleyiniz.
+    =========================================================
+ */
+ 
+ SELECT isim, soyisim
+ FROM kisiler
+ WHERE sehir <= 'Z';
+ 
+ -- Option:
+/*  ========================  SORU-10 ========================
+    Kisiler tablosundaki sehri 'Konya' dan kucuk veya esit olan sehirlerde
+    yasayan kisileri isim ve soyisim  bilgilerini listeleyiniz.
+    =========================================================
+ */
+ 
+SELECT isim, soyisim, sehir
+FROM kisiler
+WHERE sehir <= 'Konya';
+
+/*  ========================  SORU-11 ========================
+    Kisiler tablosundaki ismi 'Fatma' dan kucuk veya esit olan kisilerin
+    yas bilgilerini listeleyiniz.
+    =========================================================
+ */
+ 
+ SELECT yas
+ FROM kisiler
+ WHERE isim <= 'Fatma';
+ 
+ /*  ========================  SORU-12 ========================
+    Kisiler tablosundaki yasi 35 den kucuk veya esit olan kisilerin
+    bilgilerini listeleyiniz.
+    =========================================================
+ */
+ 
+ SELECT *
+ FROM kisiler
+ WHERE yas <= 35;
+ 
+ /*===============================================
+Değildir (<> veya !=): İki değerin birbirine eşit olmadığını kontrol eder.
+===============================================*/
+
+/*
+*************** SYNTAX ***************
+SELECT * FROM tablo_adı WHERE sütun_adı <> 1;
+SELECT * FROM tablo_adı WHERE sütun_adı != 1;
+*/
+
+/*  ========================  SORU-13 ========================
+    Kisiler tablosundaki sehri Trabzon olmayan kisilerin
+    bilgilerini listeleyiniz.
+    =========================================================
+ */
+ 
+SELECT * FROM kisiler
+WHERE sehir != 'Trabzon';
+
+/*  ========================  SORU-14 ========================
+    Kisiler tablosundaki soyismi Gunes olmayan kisilerin
+    bilgilerini listeleyiniz.
+    =========================================================
+ */
+ 
+ SELECT * FROM kisiler
+ WHERE soyisim != 'Gunes';
+ 
+ /*  ========================  SORU-15 ========================
+    Kisiler tablosundaki ismi  Kaya olmayan kisilerin
+    bilgilerini listeleyiniz.
+    =========================================================
+ */
+ 
+ SELECT * FROM kisiler
+ WHERE isim != 'Kaya';
+ 
+ /*===============================================
+        WHERE / Mantiksal Operatorler
+===============================================*/
+
+/*
+"AND", "OR" ve "NOT", SQL sorgu dili içinde kullanılan mantıksal operatörlerdir.
+ Bu operatörler, sorgularda belirli koşulların nasıl birleştirileceğini ve
+ değerlendirileceğini kontrol eder. Bu operatörlerin kullanımı, veritabanı
+ sorgularınızın esnekliğini ve gücünü arttirir.
+*/
+
+/*===============================================
+        Mantiksal Operatorler / AND
+===============================================*/
+/*
+
+/*
+1- "AND" operatörü, birden fazla koşulun aynı anda karşılanması gerektiğinde kullanılır.
+2- Tüm "AND" operatörüyle bağlanmış koşulların TRUE olması durumunda sonuç TRUE döner.
+3- Eğer koşullardan herhangi biri FALSE ise, sonuç da FALSE olur.
+Örnek: SELECT * FROM tablo_adi WHERE sütun1 = 'değer1' AND sütun2 = 'değer2' sorgusu,
+hem sütun1'in 'değer1' değerine eşit olduğu hem de sütun2'nin 'değer2' değerine eşit olduğu kayıtları
+secer.
+*/
+
+/*
+*************** SYNTAX ***************
+SELECT * FROM tablo_adı
+WHERE 1sütun_adı = 1
+AND 2sütun_adı = 2 ;
+*/
+
+/*  ========================  SORU-1 ========================
+ Kisiler tablosundan 29 yaşından büyük olan ve Ankara'da yaşayan kişileri listeleyiniz.
+    =========================================================
+ */
+ 
+SELECT * FROM kisiler
+WHERE yas > 29
+AND sehir = 'Ankara';
+
+/*  ========================  SORU-2 ========================
+ Kisiler tablosundan Adı 'Fatma' olan ve Bursa'da yaşayan kişileri listeleyiniz.
+    =========================================================
+ */
+ 
+ SELECT * FROM kisiler
+ WHERE isim = 'Fatma'
+ AND sehir = 'Bursa';
+ 
+ /*  ========================  SORU-3 ========================
+ Kisiler tablosundan ismi 'Ayse' ve soyismi 'Kaya' olan kişileri listeleyiniz.
+    =========================================================
+ */
+ 
+ SELECT *
+ FROM kisiler
+ WHERE isim = 'Ayse'
+ AND soyisim = 'Kaya';
+ 
+ /* ===============================================
+                   BETWEEN
+===============================================*/
+
+/*
+BETWEEN anahtar kelimesi, SQL'de bir aralıktaki değerleri seçmek için kullanılır.
+ Bu anahtar kelime genellikle sayısal değerler, tarihler ve metinlerle kullanılır
+ ve belirtilen iki değer arasındaki tüm değerleri kapsar.
+ BETWEEN ile belirlenen aralık her iki uç değeri de içerir, yani "başlangıç" ve "bitiş"
+ değerleri sorgu sonuçlarına dahildir.
+*/
+
+/*
+*************** SYNTAX ***************
+SELECT sütun_adı
+FROM tablo_adı
+WHERE sütun_adı BETWEEN değer1 AND değer2;
+*/
+
+/*  ========================  SORU-4 ========================
+ Kisiler tablosundan yaşı 25 ile 35 arasında olan kişileri listeleyiniz.
+    =========================================================
+ */
+ 
+ SELECT * FROM kisiler
+ WHERE yas
+ BETWEEN 25
+ AND 35;   				-- > veya < olarak degil >= veya <= olarak calisir.
+ 
+/*  ========================  SORU-5 ========================
+ Kisiler tablosundan yaşı 25 ile 35 arasında olan ve Ankara'da yaşayan kişileri listeleyiniz.
+    =========================================================
+ */
+ 
+ SELECT * FROM kisiler
+ WHERE yas BETWEEN 25 AND 35
+ AND sehir = 'Ankara';
+ 
+ /*  ======================== Extra ========================
+   Kisiler tablosundan ismi Adem ile Aylin arasında olan ve
+   Ankara'da yaşayan kişileri listeleyiniz.
+    =========================================================
+ */
+ 
+  SELECT * FROM kisiler
+  WHERE isim BETWEEN 'Adem' AND 'Aylin'
+  AND sehir = 'Ankara';
+  
+  /*===============================================
+        Mantiksal Operatorler / OR
+===============================================*/
+/*
+
+1- "OR" operatörü, birden fazla koşuldan en az birinin karşılanması
+gerektiğinde kullanılır.
+2- Koşullardan herhangi biri TRUE ise, sonuç TRUE döner.
+3- Tüm koşullar FALSE ise, sonuç FALSE olur.
+Örnek: SELECT * FROM tablo_adi WHERE sütun1 = 'değer1' OR
+sütun2 = 'değer2' sorgusu, sütun1'in
+'değer1' değerine eşit olduğu veya sütun2'nin 'değer2'
+değerine eşit olduğu kayıtları seçer.
+*/
+
+/*
+*************** SYNTAX ***************
+SELECT * FROM tablo_adı
+WHERE 1sütun_adı = 1
+OR 2sütun_adı = 2 ;
+*/
+
+/*  ========================  SORU-6 ========================
+ Kisiler tablosundan yaşı 22 veya 35 olan kişileri listeleyiniz.
+    =========================================================
+ */
+ 
+ SELECT * FROM kisiler
+ WHERE yas = 22
+ OR yas = 35;
+ 
+/*  ========================  SORU-7 ========================
+ Kisiler tablosundan İstanbul, Ankara veya İzmir'de yaşayan kişileri listeleyiniz.
+    =========================================================
+ */
+ 
+SELECT * FROM kisiler
+WHERE sehir = 'Istanbul'
+OR sehir = 'Ankara'
+OR sehir = 'Izmir';
+ 
+ 
+
 
