@@ -427,6 +427,112 @@ SELECT * FROM kisiler
 WHERE sehir = 'Istanbul'
 OR sehir = 'Ankara'
 OR sehir = 'Izmir';
+
+/*===============================================
+                  IN OPERATORU
+===============================================*/
+
+/*
+SQL'de IN operatörü, belirli bir sütunun değerlerini belirtilen bir değerler
+ listesiyle karşılaştırmak için kullanılır. Bu operatör, sorgulanacak değerlerin
+ bir listesini parantez içinde alır ve belirtilen sütunun değeri bu listedeki 
+ herhangi bir değerle eşleşirse, o satırı sonuç kümesine dahil eder. IN operatörü,
+ birden çok OR koşulunu daha okunaklı ve kısa bir şekilde yazmanın bir yoludur.
+*/
+
+/*
+*************** SYNTAX ***************
+SELECT sütun_adları
+FROM tablo_adi
+WHERE sütun_adi IN (değer1, değer2, ..., değerN);
+*/
+
+/*  ========================  SORU-8 ========================
+ Kisiler tablosundan İstanbul, Ankara veya İzmir'de yaşayan kişileri listeleyiniz.
+    =========================================================
+ */
+
+-- OR COZUMU
+
+SELECT * FROM kisiler
+WHERE sehir = 'Istanbul'
+OR sehir = 'Ankara'
+OR sehir = 'Izmir';
+
+-- IN COZUMU
+
+SELECT * FROM kisiler
+WHERE sehir IN ('Istanbul','Ankara','Izmir');
+
+
+/*  ========================  SORU-9 ========================
+ Kisiler tablosundan adı 'Ahmet', 'Mehmet' veya 'Ayşe' olan kişileri listeleyiniz.
+    =========================================================
+ */
+
+
+ SELECT * FROM kisiler
+ WHERE isim IN ('Ahmet','Mehmet','Ayşe');
+
+
+/*  ========================  SORU-10 ========================
+ Kisiler tablosundan Soyadı 'Demir', 'Çelik' veya 'Kaya' olan kişileri listeleyiniz.
+    =========================================================
+ */
+
+SELECT * FROM kisiler
+WHERE soyisim IN ('Demir','Celik','Kaya');
+
+
+/*===============================================
+        Mantiksal Operatorler / NOT
+===============================================*/
+
+/*
+1- "NOT" operatörü, bir koşulun sonucunu tersine çevirmek için kullanılır.
+2- Eğer koşul TRUE ise, "NOT" operatörü sonucu FALSE yapar; koşul FALSE ise, sonucu TRUE yapar.
+3- Genellikle "NOT IN", "NOT EXISTS", "NOT LIKE" gibi ifadelerde kullanılır.
+
+Örnek: SELECT * FROM tablo_adi WHERE NOT sütun1 = 'değer1' sorgusu, sütun1'in 
+'değer1' değerine eşit olmayan tüm kayıtları seçer.
+*/
+
+/*
+*************** SYNTAX ***************
+SELECT * FROM tablo_adı 
+WHERE NOT sütun_adı = 1;
+*/
+
+
+/*  ========================  SORU-11 ========================
+ Kisiler tablosundan  İstanbul'da yaşamayan kişileri listeleyiniz.
+    =========================================================
+ */
+ 
+ SELECT * FROM kisiler
+ WHERE sehir = 'Istanbul';    -- Istanbul'da yasayanlar
+ 
+ 
+ SELECT * FROM kisiler
+ WHERE NOT sehir = 'Istanbul';    -- Istanbul'da yasamayanlar
+
+
+ SELECT * FROM kisiler
+ WHERE sehir != 'Istanbul';      -- Istanbul'da yasamayanlar
+
+
+ SELECT * FROM kisiler
+ WHERE sehir <> 'Istanbul';      -- Istanbul'da yasamayanlar
+ 
+ 
+/*  ========================  SORU-12 ========================
+ Kisiler tablosundan 30 yaşından büyük olmayan kişileri listeleyiniz.
+    =========================================================
+ */ 
+ 
+ SELECT * from kisiler
+ WHERE yas <= 30;
+
  
  
 
