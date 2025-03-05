@@ -64,3 +64,54 @@ LIMIT 3;
 -- ORDER BY RAND() ifadesi, tablonun satırlarını rastgele bir sıraya sokar.
 -- Bu yöntem, özellikle küçük ve orta ölçekli tablolar için uygundur.
 -- Ancak, büyük veri setleri için performans sorunlarına yol açabilir.
+
+
+/*  =============================  SORU-15 =============================
+    Kitaplik tablosundan en eski iki kitabi listeleyiniz.
+    ===================================================================
+*/
+
+SELECT yayin_yili, kitap_adi
+FROM kitaplik
+ORDER BY yayin_yili
+LIMIT 2;
+
+
+/*  =============================  SORU-17 =============================
+    Kitaplik tablosundaki kitaplarin 3. sayfasını listeleyiniz.
+    (Her sayfanin boyutu 3 kitap ile sinirlidir.)
+    ===================================================================
+*/
+
+SELECT * FROM kitaplik
+LIMIT 3 OFFSET 6;
+
+/*  =============================  SORU-18 =============================
+    Kitaplik tablosundaki alfabetik siralanmis kitaplarin 4. sayfasını listeleyiniz.
+    (Her sayfanin boyutu 2 kitap ile sinirlidir.)
+    ===================================================================
+*/
+
+SELECT * FROM kitaplik
+ORDER BY kitap_adi ASC
+LIMIT 2 OFFSET 6;
+
+/*  =============================  SORU-19 =============================
+    Kitaplik tablosundaki 'Fyodor Dostoyevski' nin kitaplarinin 2. sayfasını listeleyiniz.
+    (Her sayfanin boyutu 1 kitap ile sinirlidir.)
+    ===================================================================
+*/
+
+SELECT * FROM kitaplik
+WHERE yazar = 'Fyodor Dostoyevski'
+LIMIT 1 OFFSET 1;
+
+/*  =============================  SORU-20 =============================
+    Kitaplik tablosundaki yayin yili 1950'den once olan kitaplarinin 1. sayfasını listeleyiniz.
+    (Her sayfanin boyutu 4 kitap ile sinirlidir.)
+    ===================================================================
+*/
+
+SELECT * FROM kitaplik
+WHERE yayin_yili < 1950
+LIMIT 4 ;
