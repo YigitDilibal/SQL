@@ -245,6 +245,38 @@ urun_isim'ini ve urunleri nisan ayinda alan musterilerin isimlerini
 getiren bir Query yaziniz.
 ----------------------------------------------------------------*/
 
+SELECT urun_isim, musteri_isim
+FROM nisan_satislar 
+WHERE EXISTS (  SELECT urun_isim
+				FROM mayis_satislar 
+                WHERE nisan_satislar.urun_isim = mayis_satislar.urun_isim)
+;
+
+
+-- Nisan ayinda satilan ve mayis ayinda satilmayan urun ismini ve 
+-- o urunu satin alan musteri ismini getiriniz.
+
+
+SELECT urun_isim, musteri_isim
+FROM nisan_satislar 
+WHERE NOT EXISTS (  SELECT urun_isim
+				FROM mayis_satislar 
+                WHERE nisan_satislar.urun_isim = mayis_satislar.urun_isim)
+;
+
+
+/*----------------------------------------------------------------
+SORU 4 : Mayis ayinda satilip nisan ayinda satilmayan urun id ve
+satin alan kisiyi listeleyen bir QUERY yaziniz.
+----------------------------------------------------------------*/
+
+
+SELECT urun_id, musteri_isim
+FROM mayis_satislar
+WHERE NOT EXISTS (  SELECT urun_id
+				    FROM nisan_satislar
+                    WHERE nisan_satislar.urun_id = mayis_satislar.urun_id);
+
 
 
 
